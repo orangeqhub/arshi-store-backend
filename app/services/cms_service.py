@@ -58,6 +58,108 @@ DEFAULT_INSTAGRAM_CONTENT = {
     "profile_url": "https://instagram.com",
 }
 
+DEFAULT_ABOUT_PAGE = {
+    "hero_title": "About Arshi Naturals",
+    "hero_subtitle": "Pure. Authentic. Homemade with Love.",
+    "hero_button_text": "Explore Our Products",
+    "story_title": "Our Story",
+    "story_paragraphs": [
+        "Arshi Naturals was born from a passion for preserving the authentic flavors of traditional Indian homemade foods. What started as a family kitchen sharing pickles and snacks with neighbors has grown into a beloved brand serving food lovers across India.",
+        "Every jar of pickle, every batch of murukulu, and every sweet laddu is crafted with the same love and care that our grandmothers put into their cooking. We believe that food is not just nourishment — it is memory, tradition, and love.",
+        "From our kitchen in Guntur, Andhra Pradesh, we bring you the finest homemade pickles, snacks, sweets, powders and natural products — all made with 100% natural ingredients and no artificial preservatives.",
+    ],
+    "image_url": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=800&q=80",
+    "stats": [
+        {"value": "15+", "label": "Years of Tradition"},
+        {"value": "10,000+", "label": "Happy Customers"},
+        {"value": "50+", "label": "Homemade Products"},
+        {"value": "100%", "label": "Natural Ingredients"},
+    ],
+    "features_title": "Why Choose Us",
+    "features": [
+        {"icon_name": "Leaf", "title": "100% Natural Ingredients", "description": "Fresh, natural ingredients with no artificial preservatives or colors"},
+        {"icon_name": "BadgeCheck", "title": "Traditional Recipes", "description": "Time-honored family recipes passed down through generations"},
+        {"icon_name": "Zap", "title": "Freshly Prepared", "description": "Small-batch preparation for maximum freshness and authentic taste"},
+    ],
+    "delivery_title": "Delivering Across India",
+    "delivery_locations": ["Guntur", "Vijayawada", "Hyderabad", "Bangalore", "Chennai"],
+    "phone": "+91 9885161899",
+    "email": "info@arshinaturals.com",
+    "address": "Guntur, Andhra Pradesh 522001, India",
+}
+
+DEFAULT_CONTACT_PAGE = {
+    "title": "Get in Touch",
+    "description": "We'd love to hear from you. We typically respond within 2 hours during business hours.",
+    "form_title": "Send Us a Message",
+    "subjects": ["General Enquiry", "Product Enquiry", "Bulk Order", "Order Support"],
+    "phones": ["+91 9885161899", "+91 9849845670"],
+    "email": "info@arshinaturals.com",
+    "address": "Guntur, Andhra Pradesh 522001, India",
+    "map_embed_url": "https://maps.google.com/maps?q=Guntur%20Andhra%20Pradesh&t=&z=15&ie=UTF8&iwloc=&output=embed",
+}
+
+DEFAULT_FOOTER = {
+    "tagline": "Pure. Authentic. Homemade with Love.",
+    "description": "Premium homemade pickles, snacks, sweets and natural foods crafted with traditional recipes and delivered fresh to your doorstep.",
+    "quick_links": [
+        {"label": "Home", "href": "/"},
+        {"label": "Shop", "href": "/products"},
+        {"label": "Categories", "href": "/categories"},
+        {"label": "About Us", "href": "/about"},
+        {"label": "Contact Us", "href": "/contact"},
+    ],
+    "support_links": [
+        {"label": "My Orders", "href": "/orders"},
+        {"label": "Wishlist", "href": "/wishlist"},
+        {"label": "Cart", "href": "/cart"},
+        {"label": "Shipping Policy", "href": "/shipping-policy"},
+        {"label": "Return Policy", "href": "/return-policy"},
+    ],
+    "phones": ["+91 9885161899", "+91 9849845670"],
+    "email": "info@arshinaturals.com",
+    "address": "Guntur, Andhra Pradesh 522001, India",
+    "developer_name": "Orange Quantum Hub",
+    "developer_url": "https://www.ameyait.com/",
+    "copyright": "2026 Arshi Naturals. All rights reserved.",
+    "payment_methods": ["Razorpay", "UPI", "PhonePe", "COD"],
+}
+
+DEFAULT_SITE_META = {
+    "title": "Arshi Naturals | Pure. Authentic. Homemade with Love.",
+    "description": "Premium homemade pickles, snacks, sweets and natural foods crafted with traditional recipes. Delivered fresh to your doorstep.",
+    "favicon": "/logo.jpeg",
+    "og_image": "/logo.jpeg",
+}
+
+DEFAULT_WHATSAPP = {
+    "phone_number": "919885161899",
+    "message": "Hi Arshi Naturals, I would like to know more about your products.",
+    "enabled": True,
+}
+
+DEFAULT_WELCOME_POPUP = {
+    "enabled": True,
+    "image_url": "/welcome-banner.png",
+    "redirect_url": "/products",
+    "display_duration_ms": 6000,
+}
+
+DEFAULT_SOCIAL_MEDIA = {
+    "facebook": "https://facebook.com",
+    "instagram": "https://instagram.com",
+    "youtube": "https://youtube.com",
+    "twitter": "",
+    "whatsapp": "919885161899",
+}
+
+DEFAULT_POLICIES = {
+    "shipping_policy": "<h2>Shipping Policy</h2><p>We ship across India. Orders are processed within 1-2 business days. Delivery typically takes 3-7 business days depending on your location.</p>",
+    "return_policy": "<h2>Return Policy</h2><p>We take great care in packaging our products. If you receive a damaged or wrong product, please contact us within 48 hours of delivery.</p>",
+    "terms_and_conditions": "<h2>Terms & Conditions</h2><p>By using our website, you agree to these terms and conditions.</p>",
+    "privacy_policy": "<h2>Privacy Policy</h2><p>Your privacy is important to us. We collect only necessary information to process your orders.</p>",
+}
+
 
 def _serialize_banner(banner: Banner) -> dict:
     return {
@@ -207,6 +309,110 @@ class StoreCmsService:
         }
 
     @staticmethod
+    async def get_about_page(db: AsyncSession):
+        content = await StoreCmsService._get_content(db, "about_page", DEFAULT_ABOUT_PAGE)
+        return {
+            "success": True,
+            "status_code": 200,
+            "message": "About page data fetched successfully",
+            "data": content,
+        }
+
+    @staticmethod
+    async def get_contact_page(db: AsyncSession):
+        content = await StoreCmsService._get_content(db, "contact_page", DEFAULT_CONTACT_PAGE)
+        return {
+            "success": True,
+            "status_code": 200,
+            "message": "Contact page data fetched successfully",
+            "data": content,
+        }
+
+    @staticmethod
+    async def get_footer(db: AsyncSession):
+        content = await StoreCmsService._get_content(db, "footer", DEFAULT_FOOTER)
+        return {
+            "success": True,
+            "status_code": 200,
+            "message": "Footer data fetched successfully",
+            "data": content,
+        }
+
+    @staticmethod
+    async def get_site_meta(db: AsyncSession):
+        content = await StoreCmsService._get_content(db, "site_meta", DEFAULT_SITE_META)
+        return {
+            "success": True,
+            "status_code": 200,
+            "message": "Site metadata fetched successfully",
+            "data": content,
+        }
+
+    @staticmethod
+    async def get_whatsapp(db: AsyncSession):
+        content = await StoreCmsService._get_content(db, "whatsapp", DEFAULT_WHATSAPP)
+        return {
+            "success": True,
+            "status_code": 200,
+            "message": "WhatsApp settings fetched successfully",
+            "data": content,
+        }
+
+    @staticmethod
+    async def get_welcome_popup(db: AsyncSession):
+        content = await StoreCmsService._get_content(db, "welcome_popup", DEFAULT_WELCOME_POPUP)
+        return {
+            "success": True,
+            "status_code": 200,
+            "message": "Welcome popup data fetched successfully",
+            "data": content,
+        }
+
+    @staticmethod
+    async def get_social_media(db: AsyncSession):
+        content = await StoreCmsService._get_content(db, "social_media", DEFAULT_SOCIAL_MEDIA)
+        return {
+            "success": True,
+            "status_code": 200,
+            "message": "Social media data fetched successfully",
+            "data": content,
+        }
+
+    @staticmethod
+    async def get_policies(db: AsyncSession):
+        content = await StoreCmsService._get_content(db, "policies", DEFAULT_POLICIES)
+        return {
+            "success": True,
+            "status_code": 200,
+            "message": "Policies fetched successfully",
+            "data": content,
+        }
+
+    @staticmethod
+    async def get_all_site_content(db: AsyncSession):
+        keys = [
+            "hero", "newsletter", "instagram", "about_page", "contact_page",
+            "footer", "site_meta", "whatsapp", "welcome_popup", "social_media", "policies",
+        ]
+        defaults = {
+            "hero": DEFAULT_HERO_CONTENT,
+            "newsletter": DEFAULT_NEWSLETTER_CONTENT,
+            "instagram": DEFAULT_INSTAGRAM_CONTENT,
+            "about_page": DEFAULT_ABOUT_PAGE,
+            "contact_page": DEFAULT_CONTACT_PAGE,
+            "footer": DEFAULT_FOOTER,
+            "site_meta": DEFAULT_SITE_META,
+            "whatsapp": DEFAULT_WHATSAPP,
+            "welcome_popup": DEFAULT_WELCOME_POPUP,
+            "social_media": DEFAULT_SOCIAL_MEDIA,
+            "policies": DEFAULT_POLICIES,
+        }
+        result = {}
+        for key in keys:
+            result[key] = await StoreCmsService._get_content(db, key, defaults[key])
+        return result
+
+    @staticmethod
     async def subscribe_newsletter(db: AsyncSession, email: str):
         existing = await CmsRepository.get_subscriber_by_email(db, email)
         if existing:
@@ -235,14 +441,14 @@ class AdminCmsService:
         site_rows = await CmsRepository.get_all_site_content(db)
         site_map = {row.section_key: row.content for row in site_rows}
 
+        all_content = await StoreCmsService.get_all_site_content(db)
+
         return {
             "success": True,
             "status_code": 200,
             "message": "CMS content fetched successfully",
             "data": {
-                "hero": site_map.get("hero", DEFAULT_HERO_CONTENT),
-                "newsletter": site_map.get("newsletter", DEFAULT_NEWSLETTER_CONTENT),
-                "instagram": site_map.get("instagram", DEFAULT_INSTAGRAM_CONTENT),
+                **all_content,
                 "banners": [
                     _serialize_banner(b)
                     for b in await CmsRepository.get_all_banners(db)
