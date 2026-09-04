@@ -1,0 +1,120 @@
+# =========================
+# FastAPI Core
+# =========================
+fastapi
+uvicorn[standard]
+starlette
+
+# =========================
+# Database
+# =========================
+sqlalchemy
+asyncpg
+psycopg2-binary
+greenlet
+
+# =========================
+# Migrations
+# =========================
+alembic
+Mako
+
+# =========================
+# Authentication & Security
+# =========================
+python-jose[cryptography]
+passlib[bcrypt]
+bcrypt
+cryptography
+rsa
+ecdsa
+pyasn1
+
+# =========================
+# Validation & Settings
+# =========================
+pydantic-settings
+email-validator
+annotated-types
+typing_extensions
+typing-inspection
+
+# =========================
+# Environment Variables
+# =========================
+python-dotenv
+razorpay
+
+# =========================
+# Multipart/File Uploads
+# =========================
+python-multipart
+
+# =========================
+# Logging
+# =========================
+loguru
+
+# =========================
+# HTTP Client
+# =========================
+httpx
+httpcore
+h11
+anyio
+certifi
+idna
+
+# =========================
+# JSON Serialization
+# =========================
+orjson
+
+# =========================
+# Slug Generation
+# =========================
+python-slugify
+text-unidecode
+
+# =========================
+# Testing
+# =========================
+pytest
+pytest-asyncio
+pluggy
+iniconfig
+Pygments
+
+# =========================
+# Production Server
+# =========================
+gunicorn
+
+# =========================
+# Websocket Support
+# =========================
+websockets
+
+# =========================
+# Development Reload
+# =========================
+watchfiles
+httptools
+
+# =========================
+# YAML Support
+# =========================
+PyYAML
+
+# =========================
+# Utility Libraries
+# =========================
+click
+packaging
+MarkupSafe
+six
+
+# =========================
+# Console Support
+# =========================
+colorama
