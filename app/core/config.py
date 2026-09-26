@@ -22,6 +22,12 @@ class Settings(BaseSettings):
 
     RAZORPAY_KEY_SECRET: str
 
+    # Google Sign-In (OAuth client IDs are public, so a default is safe and
+    # keeps login working on redeploys where .env doesn't set it)
+    GOOGLE_CLIENT_ID: str = (
+        "313895485255-7r4m65t15uk1cdp489jak955rvf84dtt.apps.googleusercontent.com"
+    )
+
     # Blue Dart - auth
     BLUEDART_API_KEY: str = ""
     BLUEDART_API_SECRET: str = ""

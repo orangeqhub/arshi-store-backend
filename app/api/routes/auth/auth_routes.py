@@ -7,7 +7,8 @@ from app.db.session import get_db
 from app.schemas.auth_schema import (
     AdminRegisterRequest,
     UserRegisterRequest,
-    LoginRequest
+    LoginRequest,
+    GoogleLoginRequest
 )
 
 from app.services.auth_service import (
@@ -105,4 +106,15 @@ async def user_login(
         db,
         payload,
         UserRole.CUSTOMER
-    )      
+    )
+
+
+@router.post("/google")
+async def google_login(
+    payload: GoogleLoginRequest,
+    db=Depends(get_db)
+):
+    return await service.google_login(
+        db,
+        payload
+    )

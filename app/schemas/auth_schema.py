@@ -100,3 +100,11 @@ class UserRegisterRequest(BaseModel):
 class LoginRequest(BaseModel):
     email: EmailStr
     password: str
+
+
+class GoogleLoginRequest(BaseModel):
+    credential: str = Field(
+        ...,
+        min_length=10,
+        description="Google ID token returned by Sign in with Google"
+    )

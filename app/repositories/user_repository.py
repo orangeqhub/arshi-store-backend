@@ -36,6 +36,20 @@ class UserRepository:
 
         return result.scalar_one_or_none()
 
+    async def get_by_email_case_insensitive(
+        self,
+        db,
+        email: str
+    ):
+
+        result = await db.execute(
+            select(User).where(
+                func.lower(User.email) == email.lower()
+            )
+        )
+
+        return result.scalars().first()
+
     async def create(
         self,
         db,
